@@ -51,7 +51,11 @@
     variant = "";
   };
 
-  environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw
+ 	nix.gc = {
+		automatic = true;
+		dates = "weekly";
+		options = "--delete-older-than 7d";
+	};
 
   services.xserver = {
     enable = true;
