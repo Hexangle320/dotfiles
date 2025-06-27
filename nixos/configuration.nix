@@ -82,6 +82,7 @@
     pavucontrol
     mission-center
     better-control
+    adwaita-icon-theme
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
