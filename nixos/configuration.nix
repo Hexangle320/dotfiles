@@ -77,6 +77,7 @@
     #zed- # remove due to flickering
     spotify
     discord
+    vscode
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
