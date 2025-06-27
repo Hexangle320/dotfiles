@@ -1,0 +1,23 @@
+{config, ...}:
+
+{
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "";
+  };
+
+ services.xserver = {
+    enable = true;
+    desktopManager = {
+      xterm.enable = false;
+      xfce = {
+        enable = true;
+        noDesktop = true;
+        enableXfwm = false;
+      };
+    };
+    windowManager.i3.enable = true;
+  };
+  services.displayManager.defaultSession = "xfce+i3";
+}
