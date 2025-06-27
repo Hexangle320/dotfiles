@@ -74,7 +74,7 @@
     google-chrome
     nbfc-linux
     kitty
-    zed-editor
+    #zed- # remove due to flickering
     spotify
     discord
   ];
