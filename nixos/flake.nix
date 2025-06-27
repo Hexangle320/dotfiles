@@ -4,11 +4,13 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # Nix Hardware
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     # Spicetify-nix
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    # Hyprland 
+    hyprland.url = "github:hyprwm/Hyprland";
   };
-
-  inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
   outputs = {
     self,
