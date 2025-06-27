@@ -78,6 +78,10 @@
     spotify
     discord
     vscode
+    nwg-look
+    pavucontrol
+    mission-center
+    better-control
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
