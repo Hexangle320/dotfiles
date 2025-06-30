@@ -3,14 +3,21 @@
 {
   services.gnome.gnome-keyring.enable = true;
 
+  programs.uwsm.enable = true;
+
   # Enable hyprland
   programs.hyprland = {
     enable = true;
-    # set the flake package
-    package = inputs.hyprland.packages.${pkgs.stdenv.nixos.system}.hyprland;
-    # make sure to also set the portal package, so that they are in sync
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.nixos.system}.xdg-desktop-portal-hyprland;
+    withUWSM = true;
   };
+
+  environment.loginShellInit = ''
+  if uwsm check may-start && uwsm select; then
+	  exec systemd-cat -t uwsm_start uwsm start default
+  fi
+  '';
+  
+  qt.enable = true;
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 

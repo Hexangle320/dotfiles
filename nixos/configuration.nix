@@ -8,7 +8,8 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./modules/wm/sway.nix
+      # ./modules/wm/sway.nix
+      ./modules/wm/hyprland.nix
     ];
 
   # Bootloader.
@@ -54,13 +55,6 @@
 
   # Enable the Flakes feature and the accompanying new nix command-line tool
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # Enable cachix for hyprland
-  nix.settings = {
-    substituters = ["https://hyprland.cachix.org"];
-    trusted-substituters = ["https://hyprland.cachix.org"];
-    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
-  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.***REMOVED*** = {

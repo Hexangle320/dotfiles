@@ -8,8 +8,6 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     # Spicetify-nix
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    # Hyprland 
-    hyprland.url = "github:hyprwm/Hyprland";
   };
 
   outputs = {
