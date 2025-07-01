@@ -20,8 +20,8 @@
     pkgs.xfce.thunar
   ];
 
-  environment.variables.EDITOR = "vscode";
-  environment.variables.MANPAGER = "vscode";
+  environment.variables.EDITOR = "code";
+  environment.variables.MANPAGER = "code";
   # remove nano
   programs.nano.enable = false;
 
