@@ -29,5 +29,7 @@
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     mako # notification system developed by swaywm maintainer
     xwayland
+    adwaita-icon-theme # a simple icon theme
+    nwg-look # gtk theming program
   ];
 }

@@ -25,6 +25,7 @@
         specialArgs = {inherit inputs outputs;};
         # > Our main nixos configuration file <
         modules = [
+          ./modules
           ./hosts/Transcend/configuration.nix
           nixos-hardware.nixosModules.omen-14-fb0798ng
           spicetify-nix.nixosModules.spicetify
