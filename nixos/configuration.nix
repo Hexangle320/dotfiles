@@ -10,6 +10,8 @@
       ./hardware-configuration.nix
       # ./modules/wm/sway.nix
       ./modules/wm/hyprland.nix
+      ./modules/quickshell
+      ./modules/system/fonts.nix
     ];
 
   # Bootloader.
