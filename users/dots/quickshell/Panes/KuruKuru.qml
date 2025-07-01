@@ -275,6 +275,7 @@ Item {
           horizontalAlignment: Image.AlignRight
           playing: parent.playing && big.visible
           source: Dat.Paths.getPath(this, "https://media.tenor.com/taxnt3zsc_4AAAAj/seseren-the-herta.gif")
+          // source: Dat.Paths.getPath(this, "https://media.tenor.com/MCL_1Ux7ZKsAAAAi/purple.gif")
           speed: parent.speed
         }
 

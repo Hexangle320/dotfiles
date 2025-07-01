@@ -8,10 +8,10 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      # ./modules/wm/sway.nix
-      ./modules/wm/hyprland.nix
-      ./modules/quickshell
-      ./modules/system/fonts.nix
+      ../../modules/programs/hyprland
+      ../../modules/programs/quickshell
+      ../../modules/system/fonts.nix
+      ../../users/***REMOVED***.nix
     ];
 
   # Bootloader.
@@ -57,14 +57,6 @@
 
   # Enable the Flakes feature and the accompanying new nix command-line tool
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.***REMOVED*** = {
-    isNormalUser = true;
-    description = "***REMOVED***";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
-  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
