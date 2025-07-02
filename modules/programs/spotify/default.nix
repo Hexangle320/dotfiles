@@ -29,28 +29,40 @@
       marketplace
       lyricsPlus
     ];
-    # theme = {
-    #   name = "text";
+    enabledSnippets = with spicePkgs.snippets; [
+    hideMadeForYou
+    hideRecentlyPlayed
+    hideWhatsNewButton
+    removePopular
+    removeRecentlyPlayed
+    removeTheArtistsAndCreditsSectionsFromTheSidebar
+    disableRecommendations
+    ];
+    
+    theme = {
+      name = "text";
 
-    #   src = "${pkgs.fetchFromGitHub {
-    #     owner = "spicetify";
-    #     repo = "spicetify-themes";
-    #     rev = "c6e82dfeaa46ee9060d0c02fc437989eb77f6c61"; 
-    #     hash = "sha256-kpHIWHuubTEwIoi+645Ai/PqXTlZMhRcBueYwgCqG2E=";
-    #   }}/text";
+      src = "${pkgs.fetchFromGitHub {
+        owner = "spicetify";
+        repo = "spicetify-themes";
+        rev = "c6e82dfeaa46ee9060d0c02fc437989eb77f6c61"; 
+        hash = "sha256-kpHIWHuubTEwIoi+645Ai/PqXTlZMhRcBueYwgCqG2E=";
+      }}/text";
   
-    #   injectCss = true;
-    #   injectThemeJs = true;
-    #   replaceColors = true;
-    #   homeConfig = false;
-    #   overwriteAssets = true;
-    #   additonalCss = "";
-    # };
+      injectCss = true;
+      injectThemeJs = true;
+      replaceColors = true;
+      homeConfig = false;
+      overwriteAssets = true;
+      additonalCss = "";
+    };
     
-    # colorScheme = "RosePineMoon";
+    colorScheme = "RosePineMoon";
 
-    theme = spicePkgs.themes.matte;
+    # theme = spicePkgs.themes.matte;
     
-    colorScheme = "rose-pine-moon";
+    # colorScheme = "rose-pine-moon";
+
+
     };
    }
