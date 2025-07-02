@@ -21,6 +21,9 @@
     pkgs.xfce.thunar
   ];
 
+  # add for drive mounting and trash
+  services.gvfs.enable = true;
+
   environment.variables.EDITOR = "code";
   environment.variables.MANPAGER = "nano";
   
