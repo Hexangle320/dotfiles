@@ -4,6 +4,7 @@
   fonts = {
     fontDir.enable = true;
     packages = [
+      pkgs.nerd-fonts.jetbrains-mono
       pkgs.nerd-fonts.caskaydia-mono
       pkgs.nerd-fonts.caskaydia-cove
       pkgs.noto-fonts

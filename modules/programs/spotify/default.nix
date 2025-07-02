@@ -40,13 +40,14 @@
     ];
     
     theme = {
-      name = "text";
+      name = "oldtext";
 
+      # remember to clear nix store when changing
       src = "${pkgs.fetchFromGitHub {
         owner = "spicetify";
         repo = "spicetify-themes";
-        rev = "c6e82dfeaa46ee9060d0c02fc437989eb77f6c61"; 
-        hash = "sha256-kpHIWHuubTEwIoi+645Ai/PqXTlZMhRcBueYwgCqG2E=";
+        rev = "b9db82a9cb537813ffecdfaf7d9e7746e383d6a7"; 
+        hash = "sha256-VDuGhSMcV+DBOTKhnQtFIcxVxZIwjGhK/NvcbYTtXQs=";
       }}/text";
   
       injectCss = true;
@@ -56,13 +57,8 @@
       overwriteAssets = true;
       additonalCss = "";
     };
-    
+
     colorScheme = "RosePineMoon";
-
-    # theme = spicePkgs.themes.matte;
-    
-    # colorScheme = "rose-pine-moon";
-
 
     };
    }
