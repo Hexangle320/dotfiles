@@ -19,6 +19,7 @@
     pkgs.better-control
     pkgs.pciutils
     pkgs.xfce.thunar
+    pkgs.waypaper
   ];
 
   # add for drive mounting and trash
