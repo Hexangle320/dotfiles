@@ -22,9 +22,9 @@
   ];
 
   environment.variables.EDITOR = "code";
-  environment.variables.MANPAGER = "code";
-  # remove nano
-  programs.nano.enable = false;
+  environment.variables.MANPAGER = "nano";
+  
+  programs.nano.enable = true;
 
   # wayland on electron and chromium based apps
   # disable if slow startup time for the same
