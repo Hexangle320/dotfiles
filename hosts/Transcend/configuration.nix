@@ -6,13 +6,10 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ../../modules/programs/hyprland
-      ../../modules/programs/quickshell
-      ../../modules/system/fonts.nix
       ../../users/***REMOVED***.nix
     ];
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "Transcend"; # Define your hostname.
    #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
