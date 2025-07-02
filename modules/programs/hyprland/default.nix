@@ -30,7 +30,6 @@
     mako # notification system developed by swaywm maintainer
     xwayland
     adwaita-icon-theme # a simple icon theme
-    nwg-look # gtk theming program
     hyprpaper # wallpaper backend
   ];
 }

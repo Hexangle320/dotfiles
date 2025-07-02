@@ -8,11 +8,17 @@
   # global
   environment.systemPackages = [
     pkgs.git
+    pkgs.wget
     pkgs.p7zip
     pkgs.unrar
     pkgs.kitty
     pkgs.vscode
     pkgs.udiskie
+
+    ## Theming Software
+    pkgs.hyprcursor
+    pkgs.waypaper
+    pkgs.nwg-look
 
     ## Control Software 
     pkgs.pavucontrol
@@ -20,7 +26,6 @@
     pkgs.better-control
     pkgs.pciutils
     pkgs.xfce.thunar
-    pkgs.waypaper
   ];
 
   # add for drive mounting and trash
