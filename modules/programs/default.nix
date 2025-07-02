@@ -12,6 +12,7 @@
     pkgs.unrar
     pkgs.kitty
     pkgs.vscode
+    pkgs.udiskie
 
     ## Control Software 
     pkgs.pavucontrol
