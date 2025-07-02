@@ -19,6 +19,12 @@
     pkgs.hyprcursor
     pkgs.waypaper
     pkgs.nwg-look
+    pkgs.gowall
+
+    # Wallpaper backends
+    pkgs.swww
+    pkgs.hyprpaper
+    pkgs.mpvpaper
 
     ## Control Software 
     pkgs.pavucontrol
