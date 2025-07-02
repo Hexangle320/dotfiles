@@ -21,7 +21,7 @@
   in {
     # NixOS configuration entrypoint
     nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
+      Transcend = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         # > Our main nixos configuration file <
         modules = [
