@@ -15,6 +15,7 @@
     pkgs.kitty
     pkgs.vscode
     pkgs.udiskie
+    pkgs.fastfetch
 
     ## Theming Software
     pkgs.hyprcursor
