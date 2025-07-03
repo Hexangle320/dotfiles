@@ -3,6 +3,7 @@
     ./hyprland
     ./quickshell
     ./spotify
+    ./discord
   ];
 
   # global
