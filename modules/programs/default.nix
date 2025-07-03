@@ -4,6 +4,7 @@
     ./quickshell
     ./spotify
     ./discord
+    ./zsh
   ];
 
   # global
