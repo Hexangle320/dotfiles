@@ -24,6 +24,7 @@
       adblockify
       hidePodcasts
       shuffle # shuffle+ (special characters are sanitized out of extension names)
+      volumePercentage
     ];
     enabledCustomApps = with spicePkgs.apps; [
       marketplace
