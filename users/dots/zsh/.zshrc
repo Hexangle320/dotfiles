@@ -21,3 +21,5 @@ compinit
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export PATH="$PATH:$HOME/dotfiles/users/dots/scripts"
+
+alias nr="sudo nixos-rebuild switch"
