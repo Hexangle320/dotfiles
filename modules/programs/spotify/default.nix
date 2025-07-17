@@ -2,10 +2,10 @@
   let
     system = "x86_64-linux";
     pkgs = import (builtins.fetchGit {
-         name = "spotify-1.2.22";
+         name = "spotify-1.2.26";
          url = "https://github.com/NixOS/nixpkgs/";
          ref = "refs/heads/nixpkgs-unstable";
-         rev = "459104f841356362bfb9ce1c788c1d42846b2454";
+         rev = "336eda0d07dc5e2be1f923990ad9fdb6bc8e28e3";
      }) {
       inherit system;
       # for some what ever f*ucking reason "nixpkgs.config.allowUnfree = true;"
