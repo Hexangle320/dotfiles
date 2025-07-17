@@ -3,15 +3,20 @@
 {
   fonts = {
     fontDir.enable = true;
-    packages = [
-      pkgs.nerd-fonts.jetbrains-mono
-      pkgs.nerd-fonts.caskaydia-mono
-      pkgs.nerd-fonts.caskaydia-cove
-      pkgs.noto-fonts
-      pkgs.noto-fonts-emoji
-      pkgs.noto-fonts-cjk-sans
-      pkgs.noto-fonts-cjk-serif
-      pkgs.material-symbols
+    packages =  with pkgs; [
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.caskaydia-mono
+      nerd-fonts.caskaydia-cove
+      nerd-fonts._0xproto
+      nerd-fonts.droid-sans-mono
+      noto-fonts
+      noto-fonts-emoji
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
+      material-symbols
+      material-icons
+      fira-sans
+      roboto
     ];
   };
 }
