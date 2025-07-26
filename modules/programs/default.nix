@@ -49,6 +49,12 @@
   # disable if slow startup time for the same
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
+  # wayland on firefox
+  environment.sessionVariables.MOZ_ENABLE_WAYLAND = "1";
+
+  # firefox smooth scroll
+  environment.sessionVariables.MOZ_USE_XINPUT2 = "1";
+
   security.sudo = {
     execWheelOnly = true;
     extraRules = [
