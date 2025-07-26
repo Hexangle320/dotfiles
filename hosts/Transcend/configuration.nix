@@ -25,7 +25,12 @@
     nbfc-linux
   ];
 
-  # services.upower.enable = true; # enable upower
+  services.power-profiles-daemon.enable = true;
+  services.upower = {
+    enable = true;
+    usePercentageForPolicy = true;
+    criticalPowerAction = "PowerOff";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
