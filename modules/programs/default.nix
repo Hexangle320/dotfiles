@@ -10,7 +10,6 @@
   # global
   environment.systemPackages = [
     pkgs.git
-    pkgs.wget
     pkgs.p7zip
     pkgs.unrar
     pkgs.kitty
@@ -22,18 +21,14 @@
     pkgs.hyprcursor
     pkgs.waypaper
     pkgs.nwg-look
-    pkgs.gowall
 
-    # Wallpaper backends
+    # Wallpaper backend
     pkgs.swww
-    pkgs.hyprpaper
-    pkgs.mpvpaper
 
     ## Control Software 
     pkgs.pavucontrol
     pkgs.mission-center
     pkgs.better-control
-    pkgs.pciutils
     pkgs.xfce.thunar
   ];
 
