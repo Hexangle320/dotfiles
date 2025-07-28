@@ -1,15 +1,16 @@
-{ inputs, outputs, nixpkgs, ... }:
-
-let
+{
+  inputs,
+  outputs,
+  nixpkgs,
+  ...
+}: let
   system = "x86_64-linux";
 
   pkgs = import nixpkgs {
     inherit system;
     config.allowUnfree = true;
   };
-
-in
-{
+in {
   # Laptop Profile
   Transcend = nixpkgs.lib.nixosSystem {
     inherit system;
@@ -20,6 +21,9 @@ in
       };
     };
     modules = [
+      {
+        environment.systemPackages = [inputs.alejandra.defaultPackage.${system}];
+      }
       inputs.nixos-hardware.nixosModules.omen-14-fb0798ng
       inputs.spicetify-nix.nixosModules.spicetify
       ./Transcend/configuration.nix

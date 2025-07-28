@@ -8,6 +8,9 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     # Spicetify-nix
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    # Alejandra
+    alejandra.url = "github:kamadorueda/alejandra/4.0.0";
+    alejandra.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -15,6 +18,7 @@
     nixpkgs,
     nixos-hardware,
     spicetify-nix,
+    alejandra,
     ...
   } @ inputs: let
     inherit (self) outputs;
