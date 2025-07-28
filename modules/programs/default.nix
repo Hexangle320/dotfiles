@@ -25,7 +25,7 @@
     # Wallpaper backend
     pkgs.swww
 
-    ## Control Software 
+    ## Control Software
     pkgs.pavucontrol
     pkgs.mission-center
     pkgs.better-control
@@ -37,7 +37,7 @@
 
   environment.variables.EDITOR = "code";
   environment.variables.MANPAGER = "nano";
-  
+
   programs.nano.enable = true;
 
   # wayland on electron and chromium based apps

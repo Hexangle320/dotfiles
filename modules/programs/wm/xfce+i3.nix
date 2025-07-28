@@ -1,13 +1,11 @@
-{config, ...}:
-
-{
+{config, ...}: {
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
 
- services.xserver = {
+  services.xserver = {
     enable = true;
     desktopManager = {
       xterm.enable = false;

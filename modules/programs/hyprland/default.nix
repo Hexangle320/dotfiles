@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   services.gnome.gnome-keyring.enable = true;
 
   programs.uwsm.enable = true;
@@ -12,11 +14,11 @@
   };
 
   environment.loginShellInit = ''
-  if uwsm check may-start && uwsm select; then
-	  exec systemd-cat -t uwsm_start uwsm start default
-  fi
+    if uwsm check may-start && uwsm select; then
+     exec systemd-cat -t uwsm_start uwsm start default
+    fi
   '';
-  
+
   qt.enable = true;
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
