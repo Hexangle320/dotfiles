@@ -19,18 +19,11 @@
   } @ inputs: let
     inherit (self) outputs;
   in {
-    # NixOS configuration entrypoint
-    nixosConfigurations = {
-      Transcend = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        # > Our main nixos configuration file <
-        modules = [
-          ./modules
-          ./hosts/Transcend/configuration.nix
-          nixos-hardware.nixosModules.omen-14-fb0798ng
-          spicetify-nix.nixosModules.spicetify
-        ];
-      };
-    };
+    nixosConfigurations = (
+      import ./hosts {
+        inherit (nixpkgs) lib;
+        inherit inputs outputs nixpkgs;
+      }
+    );
   };
 }
