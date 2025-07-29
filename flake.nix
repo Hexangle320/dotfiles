@@ -14,6 +14,9 @@
     # Quickshell
     quickshell.url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
     quickshell.inputs.nixpkgs.follows = "nixpkgs";
+    # Hjem
+    hjem.url = "github:feel-co/hjem";
+    hjem.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -23,6 +26,7 @@
     spicetify-nix,
     alejandra,
     quickshell,
+    hjem,
     ...
   } @ inputs: let
     inherit (self) outputs;
