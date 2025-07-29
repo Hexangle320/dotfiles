@@ -29,6 +29,8 @@ in {
       hidePodcasts
       shuffle # shuffle+ (special characters are sanitized out of extension names)
       volumePercentage
+      copyToClipboard
+      queueTime
     ];
     enabledCustomApps = with spicePkgs.apps; [
       marketplace
