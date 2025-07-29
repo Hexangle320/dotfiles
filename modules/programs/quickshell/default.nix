@@ -1,12 +1,14 @@
 {
   config,
   pkgs,
+  inputs,
+  system,
   ...
 }: {
   services.power-profiles-daemon.enable = true;
 
   environment.systemPackages = with pkgs; [
-    quickshell
+    inputs.quickshell.packages.${system}.default
     kdePackages.qtbase
     kdePackages.qtdeclarative
     kdePackages.qtmultimedia

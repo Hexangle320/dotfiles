@@ -11,6 +11,9 @@
     # Alejandra
     alejandra.url = "github:kamadorueda/alejandra/4.0.0";
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
+    # Quickshell
+    quickshell.url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+    quickshell.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -19,6 +22,7 @@
     nixos-hardware,
     spicetify-nix,
     alejandra,
+    quickshell,
     ...
   } @ inputs: let
     inherit (self) outputs;
