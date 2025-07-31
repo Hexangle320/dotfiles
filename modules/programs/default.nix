@@ -5,6 +5,7 @@
     ./spotify
     ./discord
     ./zsh
+    ./thunar
   ];
 
   # global
@@ -21,6 +22,8 @@
     pkgs.hyprcursor
     pkgs.waypaper
     pkgs.nwg-look
+    pkgs.kdePackages.qt6ct
+    pkgs.kdePackages.breeze
 
     # Wallpaper backend
     pkgs.swww
@@ -29,11 +32,7 @@
     pkgs.pavucontrol
     pkgs.mission-center
     pkgs.better-control
-    pkgs.xfce.thunar
   ];
-
-  # add for drive mounting and trash
-  services.gvfs.enable = true;
 
   environment.variables.EDITOR = "code";
   environment.variables.MANPAGER = "nano";
