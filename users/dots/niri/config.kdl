@@ -55,10 +55,14 @@ binds {
     MOD+E                               hotkey-overlay-title="File Manager: Thunar" { spawn "thunar"; }
 
     // ─── Audio Controls ───
-    XF86AUDIORAISEVOLUME                allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
-    XF86AUDIOLOWERVOLUME                allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
-    XF86AUDIOMUTE                       allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-    XF86AUDIOMICMUTE                    allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+    XF86AUDIORAISEVOLUME                allow-when-locked=true { spawn "wpctl" "set-volume" "-l" "1" "@DEFAULT_AUDIO_SINK@" "1%+"; }
+    XF86AUDIOLOWERVOLUME                allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "1%-"; }
+    XF86AUDIOMUTE                       allow-when-locked=true repeat=false { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AUDIOMICMUTE                    allow-when-locked=true repeat=false { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+
+    // ─── Brightness Controls ───
+    XF86MONBRIGHTNESSUP                 allow-when-locked=true { spawn "brightnessctl" "-e4" "-n2" "set" "1%+"; }
+    XF86MONBRIGHTNESSDOWN               allow-when-locked=true { spawn "brightnessctl" "-e4" "-n2" "set" "1%-"; }
 
     // ─── Window Movement and Focus ───
     MOD+C                               { close-window; }
@@ -173,7 +177,7 @@ binds {
     spawn-at-startup "qs"
     spawn-at-startup "udiskie"
     spawn-at-startup "swww-daemon"
-    spawn-at-startup "waypaper"  "--restore"
+    spawn-at-startup "waypaper" "--restore"
     spawn-at-startup "xwayland-satellite"
     spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 
