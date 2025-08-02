@@ -5,11 +5,7 @@
 }: {
   services.gnome.gnome-keyring.enable = true;
 
-  # Enable hyprland
-  programs.hyprland = {
-    enable = true;
-    withUWSM = true;
-  };
+  programs.niri.enable = true;
 
   qt.enable = true;
 
@@ -23,6 +19,7 @@
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     mako # notification system developed by swaywm maintainer
     xwayland
+    xwayland-satellite
     adwaita-icon-theme # a simple icon theme
     hyprpolkitagent
   ];

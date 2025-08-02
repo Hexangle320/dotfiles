@@ -2,10 +2,12 @@
   imports = [
     ./hyprland
     ./quickshell
+    ./niri
     ./spotify
     ./discord
     ./zsh
     ./thunar
+    ./uwsm
   ];
 
   # global
