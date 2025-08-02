@@ -28,3 +28,5 @@ if [[ $1 = set ]]; then
 else
     echo $(get_fan_speed_percent)
 fi
+
+$(sensors | grep temp1 | head -2 | tail -1 | egrep -o '[0-9.]+' | tail -1)
