@@ -17,6 +17,7 @@
     grim # screenshot functionality
     slurp # screenshot functionality
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
+    cliphist # clipboard history
     mako # notification system developed by swaywm maintainer
     xwayland
     xwayland-satellite
