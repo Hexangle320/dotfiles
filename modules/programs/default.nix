@@ -8,6 +8,7 @@
     ./zsh
     ./thunar
     ./uwsm
+    ./xdg
   ];
 
   # global
