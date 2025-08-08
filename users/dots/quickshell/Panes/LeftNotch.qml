@@ -1,0 +1,228 @@
+import QtQuick
+import QtQuick.Layouts
+import Quickshell
+import Quickshell.Wayland
+import qs.Assets as Assets
+import qs.Data as Data
+
+Scope {
+  Variants {
+    model: Quickshell.screens
+    delegate: WlrLayershell {
+      id: notch
+      required property ShellScreen modelData
+
+      screen: modelData
+      layer: WlrLayer.Top
+      namespace: "pain.notch.quickshell"
+      anchors.top: true
+      anchors.left: true
+      anchors.right: true
+      height: screen.height * 0.65
+      exclusionMode: ExclusionMode.Ignore
+      focusable: false
+      surfaceFormat.opaque: false
+      color: "transparent"
+      mask: Region {
+        item: notchRect
+      }
+
+      Rectangle {
+        id: notchRect
+        clip: true
+        readonly property int baseWidth: 200
+        readonly property int baseHeight: 1
+        readonly property int expandedWidth: 200
+        readonly property int expandedHeight: 28
+        readonly property int fullHeight: 180
+        readonly property int fullWidth: this.expandedWidth
+
+        state: Data.Globals.leftNotchState
+        states: [
+          State {
+            name: "COLLAPSED"
+            PropertyChanges { notchRect.width: notchRect.baseWidth; notchRect.height: notchRect.baseHeight }
+          },
+          State {
+            name: "EXPANDED"
+            PropertyChanges { notchRect.width: notchRect.expandedWidth; notchRect.height: notchRect.expandedHeight }
+          },
+          State {
+            name: "FULLY_EXPANDED"
+            PropertyChanges { notchRect.width: notchRect.fullWidth; notchRect.height: notchRect.fullHeight }
+          }
+        ]
+
+        transitions: [
+          Transition {
+            reversible: true
+            from: "COLLAPSED"
+            to: "EXPANDED"
+
+            ParallelAnimation {
+              NumberAnimation {
+                property: "width"
+                duration: 150
+                easing.type: Easing.InOutCubic
+              }
+              NumberAnimation {
+                property: "height"
+                duration: 180
+                easing.type: Easing.Linear
+              }
+            }
+          },
+          Transition {
+            reversible: true
+            from: "EXPANDED"
+            to: "FULLY_EXPANDED"
+
+            ParallelAnimation {
+              NumberAnimation {
+                property: "width"
+                duration: 150
+                easing.type: Easing.InOutCubic
+              }
+              NumberAnimation {
+                property: "height"
+                duration: 100
+                easing.type: Easing.Linear
+              }
+            }
+          },
+          Transition {
+            reversible: true
+            from: "COLLAPSED"
+            to: "FULLY_EXPANDED"
+
+            ParallelAnimation {
+              NumberAnimation {
+                property: "width"
+                duration: 150
+                easing.type: Easing.InOutCubic
+              }
+              NumberAnimation {
+                property: "height"
+                duration: 200
+                easing.type: Easing.Linear
+              }
+            }
+          }
+        ]
+
+        anchors.horizontalCenter: parent.horizontalLeft
+        color: Assets.Colors.withAlpha(Assets.Colors.background, 0.89)
+        bottomLeftRadius: 0
+        bottomRightRadius: 20
+
+        MouseArea {
+          id: leftNotchArea
+          readonly property real sensitivity: 5
+          property real prevY: 0
+          property real velocity: 0
+          property bool tracing: false
+
+          anchors.fill: parent
+          hoverEnabled: true
+
+          onContainsMouseChanged: {
+            Data.Globals.leftNotchHovered = leftNotchArea.containsMouse
+            if (Data.Globals.leftNotchState == "FULLY_EXPANDED" || Data.Globals.actWinName == "desktop") { return; }
+            if (leftNotchArea.containsMouse) {
+              Data.Globals.leftNotchState = "EXPANDED"
+            } else {
+              Data.Globals.leftNotchState = "COLLAPSED"
+            }
+          }
+
+          onPressed: mevent => {
+            leftNotchArea.tracing = true;
+            leftNotchArea.prevY = mevent.y;
+            leftNotchArea.velocity = 0;
+          }
+
+          onPositionChanged: mevent => {
+            if (!tracing) {
+              return;
+            }
+            leftNotchArea.velocity = leftNotchArea.prevY - mevent.y;
+            leftNotchArea.prevY = mevent.y;
+
+            // swipe down behaviour
+            if (velocity < -leftNotchArea.sensitivity) {
+              Data.Globals.leftNotchState = "FULLY_EXPANDED";
+              leftNotchArea.tracing = false;
+              leftNotchArea.velocity = 0;
+            }
+
+            // swipe up behaviour
+            if (velocity > leftNotchArea.sensitivity) {
+              Data.Globals.leftNotchState = "EXPANDED";
+              leftNotchArea.tracing = false;
+              leftNotchArea.velocity = 0;
+            }
+          }
+
+          onReleased: mevent => {
+            leftNotchArea.tracing = false;
+            leftNotchArea.velocity = 0;
+          }
+
+          ColumnLayout {
+            anchors.fill: parent
+            anchors.centerIn: parent
+            spacing: 0
+
+              Text {
+                // center the bar in its parent component (the window)
+                anchors.centerIn: parent
+
+                text: "hello world"
+
+                color: Assets.Colors.secondary
+                visible: notchRect.height > notchRect.baseHeight
+                Layout.minimumHeight: notchRect.expandedHeight - 10
+                Layout.maximumHeight: notchRect.expandedHeight
+              }
+              
+
+            Rectangle { // Full Expand Card
+              visible: notchRect.height > notchRect.expandedHeight
+              opacity: ((notchRect.height - notchRect.expandedHeight) / (notchRect.fullHeight - notchRect.expandedHeight))
+              Layout.fillWidth: true
+              Layout.fillHeight: true
+              clip:true
+              radius: 20
+              color: Assets.Colors.withAlpha(Assets.Colors.surface, 0.8)
+
+              RowLayout {
+                anchors.fill: parent
+                AnimatedImage {
+                  playing: parent.visible
+                  Layout.fillWidth: true
+                  Layout.fillHeight: true
+                  Layout.preferredWidth: 1
+
+                  fillMode: Image.PreserveAspectCrop
+                  horizontalAlignment: Image.AlignRight
+                  source: "https://duiqt.github.io/herta_kuru/static/img/hertaa1.gif"
+                }
+                Rectangle {
+                  Layout.fillWidth: true
+                  Layout.fillHeight: true
+                  Layout.preferredWidth: 1.6
+                  color: "transparent"
+                  Text {
+                    color: Assets.Colors.primary
+                    anchors.centerIn: parent
+                    text: "Kuru Kuru Kuru Kuru"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
