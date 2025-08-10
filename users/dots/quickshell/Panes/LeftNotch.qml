@@ -20,7 +20,7 @@ Scope {
       color: "transparent"
       exclusionMode: ExclusionMode.Ignore
       focusable: false
-      height: screen.height * 0.65
+      implicitHeight: screen.height * 0.65
       layer: WlrLayer.Top
       namespace: "pain.notch.quickshell"
       screen: modelData
@@ -192,10 +192,10 @@ Scope {
             spacing: 0
 
             Text {
+              // center the bar in its parent component (the window)
+              Layout.alignment: Qt.AlignHCenter
               Layout.maximumHeight: notchRect.expandedHeight
               Layout.minimumHeight: notchRect.expandedHeight - 10
-              // center the bar in its parent component (the window)
-              anchors.centerIn: parent
               color: Assets.Colors.secondary
               text: "hello world"
               visible: notchRect.height > notchRect.baseHeight
