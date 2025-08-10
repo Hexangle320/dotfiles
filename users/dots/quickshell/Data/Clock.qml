@@ -4,5 +4,6 @@ import QtQuick
 
 SystemClock {
   id: clock
+
   precision: SystemClock.Seconds
 }

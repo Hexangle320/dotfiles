@@ -1,8 +1,11 @@
 import QtQuick
+
 MouseArea {
   id: root
+
   anchors.fill: parent
   hoverEnabled: true
+
   onContainsMouseChanged: {
     if (root.containsMouse) {
       parent.opacity = 0.92;
