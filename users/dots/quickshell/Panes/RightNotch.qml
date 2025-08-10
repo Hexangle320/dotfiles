@@ -36,16 +36,16 @@ Scope {
         readonly property int baseHeight: 1
         readonly property int baseWidth: 200
         readonly property int expandedHeight: 28
-        readonly property int expandedWidth: 600
+        readonly property int expandedWidth: 200
         readonly property int fullHeight: 180
         readonly property int fullWidth: this.expandedWidth
 
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.right: parent.right
         bottomLeftRadius: 20
-        bottomRightRadius: 20
+        bottomRightRadius: 0
         clip: true
         color: Assets.Colors.withAlpha(Assets.Colors.background, 0.89)
-        state: Data.Globals.notchState
+        state: Data.Globals.leftNotchState
 
         states: [
           State {
@@ -134,7 +134,7 @@ Scope {
         ]
 
         MouseArea {
-          id: notchArea
+          id: leftNotchArea
 
           property real prevY: 0
           readonly property real sensitivity: 5
@@ -145,45 +145,45 @@ Scope {
           hoverEnabled: true
 
           onContainsMouseChanged: {
-            Data.Globals.notchHovered = notchArea.containsMouse;
-            if (Data.Globals.notchState == "FULLY_EXPANDED" || Data.Globals.actWinName == "desktop") {
+            Data.Globals.leftNotchHovered = leftNotchArea.containsMouse;
+            if (Data.Globals.leftNotchState == "FULLY_EXPANDED" || Data.Globals.actWinName == "desktop") {
               return;
             }
-            if (notchArea.containsMouse) {
-              Data.Globals.notchState = "EXPANDED";
+            if (leftNotchArea.containsMouse) {
+              Data.Globals.leftNotchState = "EXPANDED";
             } else {
-              Data.Globals.notchState = "COLLAPSED";
+              Data.Globals.leftNotchState = "COLLAPSED";
             }
           }
           onPositionChanged: mevent => {
             if (!tracing) {
               return;
             }
-            notchArea.velocity = notchArea.prevY - mevent.y;
-            notchArea.prevY = mevent.y;
+            leftNotchArea.velocity = leftNotchArea.prevY - mevent.y;
+            leftNotchArea.prevY = mevent.y;
 
             // swipe down behaviour
-            if (velocity < -notchArea.sensitivity) {
-              Data.Globals.notchState = "FULLY_EXPANDED";
-              notchArea.tracing = false;
-              notchArea.velocity = 0;
+            if (velocity < -leftNotchArea.sensitivity) {
+              Data.Globals.leftNotchState = "FULLY_EXPANDED";
+              leftNotchArea.tracing = false;
+              leftNotchArea.velocity = 0;
             }
 
             // swipe up behaviour
-            if (velocity > notchArea.sensitivity) {
-              Data.Globals.notchState = "EXPANDED";
-              notchArea.tracing = false;
-              notchArea.velocity = 0;
+            if (velocity > leftNotchArea.sensitivity) {
+              Data.Globals.leftNotchState = "EXPANDED";
+              leftNotchArea.tracing = false;
+              leftNotchArea.velocity = 0;
             }
           }
           onPressed: mevent => {
-            notchArea.tracing = true;
-            notchArea.prevY = mevent.y;
-            notchArea.velocity = 0;
+            leftNotchArea.tracing = true;
+            leftNotchArea.prevY = mevent.y;
+            leftNotchArea.velocity = 0;
           }
           onReleased: mevent => {
-            notchArea.tracing = false;
-            notchArea.velocity = 0;
+            leftNotchArea.tracing = false;
+            leftNotchArea.velocity = 0;
           }
 
           ColumnLayout {
@@ -191,11 +191,13 @@ Scope {
             anchors.fill: parent
             spacing: 0
 
-            TopBar {
-              Layout.fillWidth: true
+            Text {
               Layout.maximumHeight: notchRect.expandedHeight
               Layout.minimumHeight: notchRect.expandedHeight - 10
-              opacity: (notchRect.width - notchRect.baseWidth) / (notchRect.expandedWidth - notchRect.baseWidth)
+              // center the bar in its parent component (the window)
+              anchors.centerIn: parent
+              color: Assets.Colors.secondary
+              text: "hello world"
               visible: notchRect.height > notchRect.baseHeight
             }
 
