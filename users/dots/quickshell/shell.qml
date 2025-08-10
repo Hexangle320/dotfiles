@@ -3,9 +3,6 @@ import QtQuick
 import "Panes" as Panes
 
 ShellRoot {
-  Panes.Notch {
-  }
-
   Panes.LeftNotch {
   }
 
