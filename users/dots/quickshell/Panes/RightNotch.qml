@@ -37,15 +37,16 @@ Scope {
         readonly property int baseWidth: 200
         readonly property int expandedHeight: 28
         readonly property int expandedWidth: 200
-        readonly property int fullHeight: 800
-        readonly property int fullWidth: 200
+        readonly property int fullHeight: 600
+        // readonly property int fullWidth: this.expandedWidth
+        readonly property int fullWidth: 400
 
         anchors.right: parent.right
         bottomLeftRadius: 20
         bottomRightRadius: 0
         clip: true
         color: Assets.Colors.withAlpha(Assets.Colors.background, 0.89)
-        state: Data.Globals.leftNotchState
+        state: Data.Globals.rightNotchState
 
         states: [
           State {
@@ -145,14 +146,14 @@ Scope {
           hoverEnabled: true
 
           onContainsMouseChanged: {
-            Data.Globals.leftNotchHovered = leftNotchArea.containsMouse;
-            if (Data.Globals.leftNotchState == "FULLY_EXPANDED" || Data.Globals.actWinName == "desktop") {
+            Data.Globals.rightNotchHovered = leftNotchArea.containsMouse;
+            if (Data.Globals.rightNotchState == "FULLY_EXPANDED" || Data.Globals.actWinName == "desktop") {
               return;
             }
             if (leftNotchArea.containsMouse) {
-              Data.Globals.leftNotchState = "EXPANDED";
+              Data.Globals.rightNotchState = "EXPANDED";
             } else {
-              Data.Globals.leftNotchState = "COLLAPSED";
+              Data.Globals.rightNotchState = "COLLAPSED";
             }
           }
           onPositionChanged: mevent => {
@@ -164,14 +165,14 @@ Scope {
 
             // swipe down behaviour
             if (velocity < -leftNotchArea.sensitivity) {
-              Data.Globals.leftNotchState = "FULLY_EXPANDED";
+              Data.Globals.rightNotchState = "FULLY_EXPANDED";
               leftNotchArea.tracing = false;
               leftNotchArea.velocity = 0;
             }
 
             // swipe up behaviour
             if (velocity > leftNotchArea.sensitivity) {
-              Data.Globals.leftNotchState = "EXPANDED";
+              Data.Globals.rightNotchState = "EXPANDED";
               leftNotchArea.tracing = false;
               leftNotchArea.velocity = 0;
             }
@@ -191,15 +192,6 @@ Scope {
             anchors.fill: parent
             spacing: 0
 
-            // Text {
-            //   // center the bar in its parent component (the window)
-            //   Layout.alignment: Qt.AlignHCenter
-            //   Layout.maximumHeight: notchRect.expandedHeight
-            //   Layout.minimumHeight: notchRect.expandedHeight - 10
-            //   color: Assets.Colors.secondary
-            //   text: "hello world"
-            //   visible: notchRect.height > notchRect.baseHeight
-            // }
             Rectangle {
               Layout.fillHeight: true
               Layout.fillWidth: true
@@ -220,19 +212,19 @@ Scope {
                   Layout.fillWidth: false
                   Layout.rightMargin: 8
                   color: Assets.Colors.primary
-                  text: (Data.Globals.leftNotchState == "FULLY_EXPANDED") ? "" : ""
+                  text: (Data.Globals.rightNotchState == "FULLY_EXPANDED") ? "" : ""
                   verticalAlignment: Text.AlignVCenter
 
                   MouseArea {
                     anchors.fill: parent
 
                     onClicked: mevent => {
-                      if (Data.Globals.leftNotchState == "EXPANDED") {
-                        Data.Globals.leftNotchState = "FULLY_EXPANDED";
+                      if (Data.Globals.rightNotchState == "EXPANDED") {
+                        Data.Globals.rightNotchState = "FULLY_EXPANDED";
                         return;
                       }
 
-                      Data.Globals.leftNotchState = "EXPANDED";
+                      Data.Globals.rightNotchState = "EXPANDED";
                     }
                   }
                 }
@@ -251,16 +243,6 @@ Scope {
 
               RowLayout {
                 anchors.fill: parent
-
-                AnimatedImage {
-                  Layout.fillHeight: true
-                  Layout.fillWidth: true
-                  Layout.preferredWidth: 1
-                  fillMode: Image.PreserveAspectCrop
-                  horizontalAlignment: Image.AlignRight
-                  playing: parent.visible
-                  source: "https://duiqt.github.io/herta_kuru/static/img/hertaa1.gif"
-                }
 
                 Rectangle {
                   Layout.fillHeight: true

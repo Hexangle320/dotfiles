@@ -37,8 +37,9 @@ Scope {
         readonly property int baseWidth: 200
         readonly property int expandedHeight: 28
         readonly property int expandedWidth: 200
-        readonly property int fullHeight: 180
-        readonly property int fullWidth: this.expandedWidth
+        readonly property int fullHeight: 600
+        // readonly property int fullWidth: this.expandedWidth
+        readonly property int fullWidth: 400
 
         anchors.left: parent.left
         bottomLeftRadius: 0
@@ -191,14 +192,43 @@ Scope {
             anchors.fill: parent
             spacing: 0
 
-            Text {
-              // center the bar in its parent component (the window)
-              Layout.alignment: Qt.AlignHCenter
+            Rectangle {
+              Layout.fillHeight: true
+              Layout.fillWidth: true
               Layout.maximumHeight: notchRect.expandedHeight
               Layout.minimumHeight: notchRect.expandedHeight - 10
-              color: Assets.Colors.secondary
-              text: "hello world"
+              Layout.preferredWidth: 1
+              color: "transparent"
               visible: notchRect.height > notchRect.baseHeight
+
+              RowLayout {
+                anchors.bottom: parent.bottom
+                anchors.left: parent.left
+                anchors.top: parent.top
+                layoutDirection: Qt.LeftToRight
+                spacing: 8
+
+                Text {
+                  Layout.fillWidth: false
+                  Layout.leftMargin: 8
+                  color: Assets.Colors.primary
+                  text: (Data.Globals.leftNotchState == "FULLY_EXPANDED") ? "" : ""
+                  verticalAlignment: Text.AlignVCenter
+
+                  MouseArea {
+                    anchors.fill: parent
+
+                    onClicked: mevent => {
+                      if (Data.Globals.leftNotchState == "EXPANDED") {
+                        Data.Globals.leftNotchState = "FULLY_EXPANDED";
+                        return;
+                      }
+
+                      Data.Globals.leftNotchState = "EXPANDED";
+                    }
+                  }
+                }
+              }
             }
 
             Rectangle {
@@ -213,16 +243,6 @@ Scope {
 
               RowLayout {
                 anchors.fill: parent
-
-                AnimatedImage {
-                  Layout.fillHeight: true
-                  Layout.fillWidth: true
-                  Layout.preferredWidth: 1
-                  fillMode: Image.PreserveAspectCrop
-                  horizontalAlignment: Image.AlignRight
-                  playing: parent.visible
-                  source: "https://duiqt.github.io/herta_kuru/static/img/hertaa1.gif"
-                }
 
                 Rectangle {
                   Layout.fillHeight: true
