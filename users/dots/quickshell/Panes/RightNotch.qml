@@ -135,7 +135,7 @@ Scope {
         ]
 
         MouseArea {
-          id: leftNotchArea
+          id: rightNotchArea
 
           property real prevY: 0
           readonly property real sensitivity: 5
@@ -146,11 +146,11 @@ Scope {
           hoverEnabled: true
 
           onContainsMouseChanged: {
-            Data.Globals.rightNotchHovered = leftNotchArea.containsMouse;
+            Data.Globals.rightNotchHovered = rightNotchArea.containsMouse;
             if (Data.Globals.rightNotchState == "FULLY_EXPANDED" || Data.Globals.actWinName == "desktop") {
               return;
             }
-            if (leftNotchArea.containsMouse) {
+            if (rightNotchArea.containsMouse) {
               Data.Globals.rightNotchState = "EXPANDED";
             } else {
               Data.Globals.rightNotchState = "COLLAPSED";
@@ -160,31 +160,31 @@ Scope {
             if (!tracing) {
               return;
             }
-            leftNotchArea.velocity = leftNotchArea.prevY - mevent.y;
-            leftNotchArea.prevY = mevent.y;
+            rightNotchArea.velocity = rightNotchArea.prevY - mevent.y;
+            rightNotchArea.prevY = mevent.y;
 
             // swipe down behaviour
-            if (velocity < -leftNotchArea.sensitivity) {
+            if (velocity < -rightNotchArea.sensitivity) {
               Data.Globals.rightNotchState = "FULLY_EXPANDED";
-              leftNotchArea.tracing = false;
-              leftNotchArea.velocity = 0;
+              rightNotchArea.tracing = false;
+              rightNotchArea.velocity = 0;
             }
 
             // swipe up behaviour
-            if (velocity > leftNotchArea.sensitivity) {
+            if (velocity > rightNotchArea.sensitivity) {
               Data.Globals.rightNotchState = "EXPANDED";
-              leftNotchArea.tracing = false;
-              leftNotchArea.velocity = 0;
+              rightNotchArea.tracing = false;
+              rightNotchArea.velocity = 0;
             }
           }
           onPressed: mevent => {
-            leftNotchArea.tracing = true;
-            leftNotchArea.prevY = mevent.y;
-            leftNotchArea.velocity = 0;
+            rightNotchArea.tracing = true;
+            rightNotchArea.prevY = mevent.y;
+            rightNotchArea.velocity = 0;
           }
           onReleased: mevent => {
-            leftNotchArea.tracing = false;
-            leftNotchArea.velocity = 0;
+            rightNotchArea.tracing = false;
+            rightNotchArea.velocity = 0;
           }
 
           ColumnLayout {
