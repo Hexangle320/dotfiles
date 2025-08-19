@@ -53,14 +53,14 @@ in {
       src = "${pkgs.fetchFromGitHub {
         owner = "spicetify";
         repo = "spicetify-themes";
-        rev = "b9db82a9cb537813ffecdfaf7d9e7746e383d6a7";
-        hash = "sha256-VDuGhSMcV+DBOTKhnQtFIcxVxZIwjGhK/NvcbYTtXQs=";
+        rev = "3637dbff71043c9246905bf04b86a9f44d9591e7";
+        hash = "sha256-D0YZyy5MBQAEDVxRVUBcXimC57R2YwwEHwjRoN567fw=";
       }}/text";
 
       injectCss = true;
       injectThemeJs = true;
       replaceColors = true;
-      homeConfig = false;
+      homeConfig = true;
       overwriteAssets = true;
       additonalCss = "";
     };
