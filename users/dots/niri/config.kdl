@@ -30,9 +30,9 @@ input {
 // You will have to remove "/-" and edit it before it takes effect.
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
 
- output "DP-1" {
+ output "eDP-1" {
     mode "2880x1800@120.000" // Set resolution and refresh rate
-    scale 1 // No scaling (use 2 for HiDPI)
+    scale 1.75
 }
 
 // ────────────── Gestures ──────────────
