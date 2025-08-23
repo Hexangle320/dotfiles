@@ -22,6 +22,7 @@
     xwayland
     xwayland-satellite
     adwaita-icon-theme # a simple icon theme
+    adw-gtk3
     hyprpolkitagent
   ];
 }
