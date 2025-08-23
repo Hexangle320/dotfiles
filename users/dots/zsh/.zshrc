@@ -22,4 +22,4 @@ compinit
 
 export PATH="$PATH:$HOME/dotfiles/users/dots/scripts"
 
-alias nr="sudo nixos-rebuild switch --no-build-nix --no-reexec --sudo"
+alias nr="nixos-rebuild switch --no-reexec --sudo"
