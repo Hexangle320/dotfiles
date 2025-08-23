@@ -56,7 +56,7 @@
     execWheelOnly = true;
     extraRules = [
       {
-        users = ["***REMOVED***"];
+        users = ["hex"];
         # lets me rebuild without having to enter the password
         commands = [
           {
