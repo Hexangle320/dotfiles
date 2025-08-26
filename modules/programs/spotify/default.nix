@@ -53,8 +53,8 @@ in {
       src = "${pkgs.fetchFromGitHub {
         owner = "spicetify";
         repo = "spicetify-themes";
-        rev = "3637dbff71043c9246905bf04b86a9f44d9591e7";
-        hash = "sha256-D0YZyy5MBQAEDVxRVUBcXimC57R2YwwEHwjRoN567fw=";
+        rev = "11e89d411ba1cc77ef89ccf65f301302c3c3d566";
+        hash = "sha256-a3tGk30V+O4qOzhQ0dfucLTxFWLcAJYYigFzQVhSgiE=";
       }}/text";
 
       injectCss = true;
