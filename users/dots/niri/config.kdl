@@ -182,6 +182,7 @@ binds {
     spawn-at-startup "udiskie"
     spawn-at-startup "swww-daemon"
     spawn-at-startup "waypaper" "--restore"
+    spawn-at-startup "hypridle"
     spawn-at-startup "xwayland-satellite"
     spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
     spawn-at-startup "systemctl" "--user" "start" "hyprpolkitagent"

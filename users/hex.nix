@@ -49,6 +49,8 @@ in {
       ".config/uwsm/env".source = ./dots/uwsm/env;
       # Hyprland
       ".config/hypr/hyprland.conf".source = ./dots/hypr/hyprland.conf;
+      # Hypridle
+      ".config/hypr/hypridle.conf".source = ./dots/hypr/hypridle.conf;
       # Niri
       ".config/niri/config.kdl".source = ./dots/niri/config.kdl;
       # Quickshell
