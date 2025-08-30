@@ -31,6 +31,13 @@ in {
     ];
   };
 
+  programs.git.config = {
+    init.defaultBranch = "main";
+    user.name = "Hexangle320";
+    user.email = "116458789+Hexangle320@users.noreply.github.com";
+    core.editor = "code --wait";
+  };
+
   system.userActivationScripts.linktosharedfolder.text = ''
     if [[ ! -h "$HOME/.config/quickshell" ]]; then
       ln -s "$HOME/dotfiles/users/dots/quickshell/" "$HOME/.config/quickshell"
