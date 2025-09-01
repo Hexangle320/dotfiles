@@ -9,10 +9,13 @@ set fish_greeting
 set fish_cursor_insert line blink
 fish_vi_key_bindings
 
+set -g hydro_symbol_start
+set hydro_symbol_git_dirty "*"
+set fish_prompt_pwd_dir_length 0
 function fish_mode_prompt -d "remove vi mode indicators"; end
 
-set -l nix_shell_info (
-  if test -n "$IN_NIX_SHELL"
-    echo -n "<nix-shell> "
-  end
-)
+if test -n "$IN_NIX_SHELL";
+  set -g hydro_symbol_start "<nix-shell> "
+else
+  set -g hydro_symbol_start
+end

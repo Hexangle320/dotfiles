@@ -18,6 +18,11 @@
     fzf.keybindings = true;
   };
 
+  environment.systemPackages = lib.attrValues {
+    inherit (pkgs.fishPlugins) sponge hydro;
+    inherit (pkgs) eza fish-lsp;
+  };
+
   programs.bash = {
     interactiveShellInit = ''
       if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
