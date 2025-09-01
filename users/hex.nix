@@ -64,9 +64,6 @@ in {
       # ".config/quickshell".source = ./dots/quickshell;
       # Fastfetch
       ".config/fastfetch/config.jsonc".source = ./dots/fastfetch/config.jsonc;
-      # Zsh
-      ".zshrc".source = ./dots/zsh/.zshrc;
-      ".p10k.zsh".source = ./dots/zsh/.p10k.zsh;
     };
   };
 }

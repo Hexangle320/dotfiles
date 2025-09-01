@@ -5,7 +5,6 @@
     ./niri
     ./spotify
     ./discord
-    ./zsh
     ./thunar
     ./uwsm
     ./xdg
