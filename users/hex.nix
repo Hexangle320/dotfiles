@@ -64,6 +64,8 @@ in {
       # ".config/quickshell".source = ./dots/quickshell;
       # Fastfetch
       ".config/fastfetch/config.jsonc".source = ./dots/fastfetch/config.jsonc;
+      # Fish
+      ".config/fish/config.fish".source = ./dots/fish/config.fish;
     };
   };
 }

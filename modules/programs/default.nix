@@ -5,6 +5,7 @@
     ./niri
     ./spotify
     ./discord
+    ./fish
     ./thunar
     ./uwsm
     ./xdg
