@@ -9,6 +9,7 @@
     ./thunar
     ./uwsm
     ./xdg
+    ./aagl
   ];
 
   # global

@@ -17,6 +17,9 @@
     # Hjem
     hjem.url = "github:feel-co/hjem";
     hjem.inputs.nixpkgs.follows = "nixpkgs";
+    # aagl
+    aagl.url = "github:ezKEa/aagl-gtk-on-nix";
+    aagl.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -27,6 +30,7 @@
     alejandra,
     quickshell,
     hjem,
+    aagl,
     ...
   } @ inputs: let
     inherit (self) outputs;
