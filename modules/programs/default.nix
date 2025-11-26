@@ -1,14 +1,15 @@
 {pkgs, ...}: {
   imports = [
-    ./quickshell
-    ./niri
-    ./spotify
-    ./discord
-    ./fish
-    ./thunar
-    ./uwsm
-    ./xdg
-    ./aagl
+    ./quickshell.nix
+    ./niri.nix
+    ./spotify.nix
+    ./discord.nix
+    ./fish.nix
+    ./thunar.nix
+    ./uwsm.nix
+    ./xdg.nix
+    ./aagl.nix
+    ./nix.nix
   ];
 
   # global

@@ -27,7 +27,7 @@ in {
       inputs.nixos-hardware.nixosModules.omen-14-fb0798ng
       inputs.spicetify-nix.nixosModules.spicetify
       ./Transcend/configuration.nix
-      ../modules
+      ../../modules
     ];
   };
 }

@@ -36,7 +36,7 @@
     inherit (self) outputs;
   in {
     nixosConfigurations = (
-      import ./hosts {
+      import ./modules/hosts {
         inherit (nixpkgs) lib;
         inherit inputs outputs nixpkgs;
       }

@@ -40,7 +40,7 @@ in {
 
   system.userActivationScripts.linktosharedfolder.text = ''
     if [[ ! -h "$HOME/.config/quickshell" ]]; then
-      ln -s "$HOME/dotfiles/users/dots/quickshell/" "$HOME/.config/quickshell"
+      ln -s "$HOME/dotfiles/dots/quickshell/" "$HOME/.config/quickshell"
     fi
   '';
 
@@ -51,21 +51,21 @@ in {
     clobberFiles = lib.mkForce true;
     files = {
       # Kitty
-      ".config/kitty/kitty.conf".source = ./dots/kitty/kitty.conf;
+      ".config/kitty/kitty.conf".source = ../../dots/kitty/kitty.conf;
       # Uwsm
-      ".config/uwsm/env".source = ./dots/uwsm/env;
+      ".config/uwsm/env".source = ../../dots/uwsm/env;
       # Hyprland
-      ".config/hypr/hyprland.conf".source = ./dots/hypr/hyprland.conf;
+      ".config/hypr/hyprland.conf".source = ../../dots/hypr/hyprland.conf;
       # Hypridle
-      ".config/hypr/hypridle.conf".source = ./dots/hypr/hypridle.conf;
+      ".config/hypr/hypridle.conf".source = ../../dots/hypr/hypridle.conf;
       # Niri
-      ".config/niri/config.kdl".source = ./dots/niri/config.kdl;
+      ".config/niri/config.kdl".source = ../../dots/niri/config.kdl;
       # Quickshell
-      # ".config/quickshell".source = ./dots/quickshell;
+      # ".config/quickshell".source = ../../dots/quickshell;
       # Fastfetch
-      ".config/fastfetch/config.jsonc".source = ./dots/fastfetch/config.jsonc;
+      ".config/fastfetch/config.jsonc".source = ../../dots/fastfetch/config.jsonc;
       # Fish
-      ".config/fish/config.fish".source = ./dots/fish/config.fish;
+      ".config/fish/config.fish".source = ../../dots/fish/config.fish;
     };
   };
 }
