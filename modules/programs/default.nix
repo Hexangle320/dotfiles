@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    ./hyprland
     ./quickshell
     ./niri
     ./spotify
