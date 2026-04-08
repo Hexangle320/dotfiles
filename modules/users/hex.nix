@@ -66,6 +66,11 @@ in {
       ".config/fastfetch/config.jsonc".source = ../../dots/fastfetch/config.jsonc;
       # Fish
       ".config/fish/config.fish".source = ../../dots/fish/config.fish;
+      # Qt6ct
+      ".config/qt6ct/qt6ct.conf".source = ../../dots/qt6ct/qt6ct.conf;
+      ".config/qt6ct/colors/darker.conf".source = ../../dots/qt6ct/colors/darker.conf;
+      # Gtk
+      ".config/gtk-4.0/settings.ini".source = ../../dots/gtk4/settings.ini;
     };
   };
 }
