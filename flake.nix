@@ -40,6 +40,7 @@
   } @ inputs: let
     inherit (self) outputs;
   in {
+    templates = import ./templates;
     nixosConfigurations = (
       import ./modules/hosts {
         inherit (nixpkgs) lib;
