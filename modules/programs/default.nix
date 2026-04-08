@@ -10,11 +10,11 @@
     ./xdg.nix
     ./aagl.nix
     ./nix.nix
+    ./git.nix
   ];
 
   # global
   environment.systemPackages = [
-    pkgs.git
     pkgs.p7zip
     pkgs.unrar
     pkgs.kitty

@@ -1,0 +1,82 @@
+# adapted from https://gist.githubusercontent.com/pksunkara/988716/raw/13f2fb121abb94f5a87eebb104821832d56e48d7/config
+[user]
+name = Hexangle320
+email = 116458789+Hexangle320@users.noreply.github.com
+
+[core]
+editor = code --wait
+whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+pager = delta
+
+[column]
+ui = auto
+
+[branch]
+sort = -committerdate
+
+[tag]
+sort = version:refname
+
+[init]
+defaultBranch = main
+
+[rerere]
+enabled = 1
+autoupdate = 1
+
+[diff]
+algorithm = histogram
+colorMoved = plain
+renames = true
+
+[difftool]
+prompt = false
+
+[push]
+autoSetupRemote = true
+followTags = true
+
+[fetch]
+prune = true
+pruneTags = true
+all = true
+
+
+[rebase]
+autoSquash = true
+updateRefs = true
+
+[color]
+ui = auto
+
+[color "branch"]
+current = yellow bold
+local = green bold
+remote = cyan bold
+
+[color "diff"]
+meta = yellow bold
+frag = magenta bold
+old = red bold
+new = green bold
+whitespace = red reverse
+
+[color "status"]
+added = green bold
+changed = yellow bold
+untracked = red bold
+
+[delta]
+features = catppuccin-mocha
+line-numbers = false
+dark = true
+
+[trim]
+bases = master,main
+protected = *production
+
+[filter "lfs"]
+clean = git-lfs clean -- %f
+smudge = git-lfs smudge -- %f
+process = git-lfs filter-process
+required = true
