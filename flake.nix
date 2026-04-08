@@ -8,11 +8,12 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     # Spicetify-nix
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
     # Alejandra
     alejandra.url = "github:kamadorueda/alejandra/4.0.0";
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
     # Quickshell
-    quickshell.url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+    quickshell.url = "git+https://git.outfoxxed.me/quickshell/quickshell/";
     quickshell.inputs.nixpkgs.follows = "nixpkgs";
     # Hjem
     hjem.url = "github:feel-co/hjem";

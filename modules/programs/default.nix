@@ -30,7 +30,7 @@
     pkgs.kdePackages.breeze
 
     # Wallpaper backend
-    pkgs.swww
+    pkgs.awww
 
     ## Control Software
     pkgs.pavucontrol
