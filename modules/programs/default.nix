@@ -11,6 +11,7 @@
     ./aagl.nix
     ./nix.nix
     ./git.nix
+    ./direnv.nix
   ];
 
   # global

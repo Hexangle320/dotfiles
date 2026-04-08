@@ -6,6 +6,8 @@ alias ls="eza --icons --group-directories-first -1"
 
 bind --mode insert alt-f 'fzf-file-widget'
 
+direnv hook fish | source
+
 set sponge_purge_only_on_exit true
 set fish_greeting
 set fish_cursor_insert line blink
