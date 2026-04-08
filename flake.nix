@@ -21,6 +21,9 @@
     # aagl
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
     aagl.inputs.nixpkgs.follows = "nixpkgs";
+    # impermanence
+    impermanence.url = "github:nix-community/impermanence";
+    impermanence.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -32,6 +35,7 @@
     quickshell,
     hjem,
     aagl,
+    impermanence,
     ...
   } @ inputs: let
     inherit (self) outputs;

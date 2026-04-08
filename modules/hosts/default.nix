@@ -30,4 +30,23 @@ in {
       ../../modules
     ];
   };
+  Surface = nixpkgs.lib.nixosSystem {
+    inherit system;
+    specialArgs = {
+      inherit inputs outputs system;
+      host = {
+        hostName = "Surface";
+      };
+    };
+    modules = [
+      {
+        environment.systemPackages = [inputs.alejandra.defaultPackage.${system}];
+      }
+      inputs.nixos-hardware.nixosModules.microsoft-surface-pro-intel
+      inputs.impermanence.nixosModules.impermanence
+      inputs.spicetify-nix.nixosModules.spicetify
+      ./Surface/configuration.nix
+      ../../modules
+    ];
+  };
 }
