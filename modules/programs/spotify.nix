@@ -24,6 +24,7 @@ in {
   programs.spicetify = {
     enable = true;
     spotifyPackage = oldSpotify;
+    wayland = false;
     enabledExtensions = with spicePkgs.extensions; [
       adblockify
       hidePodcasts
