@@ -25,9 +25,6 @@ in {
     packages = [
       pkgs.btop
       pkgs.firefox
-      pkgs.rose-pine-hyprcursor
-      pkgs.rose-pine-cursor
-      pkgs.authenticator
     ];
   };
 

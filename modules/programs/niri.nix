@@ -26,5 +26,7 @@
     adwaita-icon-theme # a simple icon theme
     adw-gtk3
     hyprpolkitagent
+    rose-pine-hyprcursor
+    rose-pine-cursor
   ];
 }
