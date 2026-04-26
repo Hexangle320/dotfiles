@@ -49,4 +49,20 @@ in {
       ../../modules
     ];
   };
+  Server = nixpkgs.lib.nixosSystem {
+    system = "aarch64-linux";
+    specialArgs = {
+      inherit inputs outputs system;
+      host = {
+        hostName = "Server";
+      };
+    };
+    modules = [
+      ./Server/configuration.nix
+      inputs.nix-minecraft.nixosModules.minecraft-servers
+      {
+        nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
+      }
+    ];
+  };
 }
