@@ -45,19 +45,6 @@
     };
   };
 
-  # Enable passwordless sudo.
-  security.sudo.extraRules = [
-    {
-      users = ["hex"];
-      commands = [
-        {
-          command = "ALL";
-          options = ["NOPASSWD"];
-        }
-      ];
-    }
-  ];
-
   environment.systemPackages = with pkgs; [
     curl
     wget
@@ -65,10 +52,11 @@
     caddy
   ];
 
-  #vscode-remote-workaround.enable = true;
-  programs.nix-ld.enable = true;
+  programs.nix-ld.enable = true; # for vscode remote
+
   services.kasmweb.enable = true;
   services.kasmweb.listenPort = 8443;
+  
   environment.defaultPackages = lib.mkForce [];
 
   # Generate self-signed cert for the public IP
