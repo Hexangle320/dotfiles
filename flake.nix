@@ -24,6 +24,8 @@
     # impermanence
     impermanence.url = "github:nix-community/impermanence";
     impermanence.inputs.nixpkgs.follows = "nixpkgs";
+    # nix-minecraft
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
   };
 
   outputs = {
@@ -36,6 +38,7 @@
     hjem,
     aagl,
     impermanence,
+    nix-minecraft,
     ...
   } @ inputs: let
     inherit (self) outputs;
