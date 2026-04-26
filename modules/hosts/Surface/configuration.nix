@@ -24,6 +24,8 @@
 
   powerManagement.enable = true;
   powerManagement.cpufreq.max = 2000000;
+  powerManagement.cpufreq.min = 1000000;
+  powerManagement.cpuFreqGovernor = "performance";
 
   networking.hostName = "Surface";
   networking.networkmanager.enable = true;
