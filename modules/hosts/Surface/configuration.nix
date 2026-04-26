@@ -9,6 +9,8 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../users/hex.nix
+    ../../services/tailscale.nix
+    ../../services/openssh.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -34,6 +36,7 @@
       "/var/db/sudo"
       "/var/lib/nixos"
       "/etc/thermald"
+      "/var/lib/tailscale"
     ];
 
     files = [
