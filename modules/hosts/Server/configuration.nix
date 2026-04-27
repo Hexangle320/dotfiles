@@ -15,6 +15,7 @@
     ../../../modules/services/minecraft.nix
     ../../../modules/services/openssh.nix
     ../../../modules/services/tailscale.nix
+    ../../../modules/services/fail2ban.nix
   ];
 
   boot = {
