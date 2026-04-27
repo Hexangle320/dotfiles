@@ -75,17 +75,10 @@
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
-    22 #SSH
+    22 # SSH
     80 # HTTP
-    443 #HTTPS
-    8443 #Kasm
-    8080 #Kasm
-    4444 #Kasm
-    8181 #Kasm
-    8182 #Kasm
-    5432 #Kasm
-    5555
-    6379 #Kasm
+    443 # HTTPS
+    8443 # Kasm
     8100 # Termix
   ];
 
