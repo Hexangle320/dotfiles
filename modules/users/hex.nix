@@ -14,7 +14,7 @@ in {
     inherit description;
 
     isNormalUser = true;
-    extraGroups = ["networkmanager" "wheel" "minecraft"];
+    extraGroups = ["networkmanager" "wheel" "minecraft" "copyparty" ];
 
     hashedPassword = "$y$j9T$oM/XO1OYCEWnEWqqReRS10$MyBVZ2jKKJx0Lu8cIyIQJmCJGCIR.YHr55ogbQbYkI0";
 

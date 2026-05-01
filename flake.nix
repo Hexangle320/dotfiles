@@ -26,6 +26,8 @@
     impermanence.inputs.nixpkgs.follows = "nixpkgs";
     # nix-minecraft
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+    # copyparty
+    copyparty.url = "github:9001/copyparty";
   };
 
   outputs = {
@@ -39,6 +41,7 @@
     aagl,
     impermanence,
     nix-minecraft,
+    copyparty,
     ...
   } @ inputs: let
     inherit (self) outputs;

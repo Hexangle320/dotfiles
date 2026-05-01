@@ -54,6 +54,7 @@
     wget
     openssl
     caddy
+    copyparty 
   ];
 
   programs.nix-ld.enable = true; # for vscode remote
@@ -62,6 +63,57 @@
   services.kasmweb.listenPort = 8443;
 
   environment.defaultPackages = lib.mkForce [];
+
+  services.copyparty = {
+    enable = true;
+    # the user to run the service as
+    user = "copyparty"; 
+    # the group to run the service as
+    group = "copyparty"; 
+    # directly maps to values in the [global] section of the copyparty config.
+    # see `copyparty --help` for available options
+    settings = {
+      i = "0.0.0.0";
+      p = [ 3923 ];
+      no-reload = true;
+      rp-loc = "/files";
+      rproxy = "1";        
+      allow-csrf = true;
+      ignored-flag = false;
+    };
+
+    # create users
+    accounts = {
+      hex.passwordFile = "/hex_password";
+    };
+
+    # create a group
+    groups = {
+      g1 = [ "hex" ];
+    };
+
+    # create a volume
+    volumes = {
+      "/" = {
+        path = "/srv/copyparty";
+        access = {
+          A = [ "hex" ];
+        };
+        flags = {
+          fk = 4;
+          scan = 60;
+          e2d = true;
+          d2t = true;
+          nohash = "\.iso$";
+        };
+      };
+    };
+    openFilesLimit = 8192;
+    package = pkgs.copyparty.override {
+      # provides exiftool for bin/hooks/image-noexif.py
+      extraPackages = [ pkgs.exiftool ];
+    };
+  };
 
   # Generate self-signed cert for the public IP
   security.acme.acceptTerms = false; # not using ACME
@@ -108,6 +160,10 @@
         }
         handle /2fauth/* {
           import anubis_proxy
+        }
+        handle /files/* {
+          import anubis_proxy
+        }
 
         reverse_proxy https://localhost:8443 {
           transport http {
@@ -138,6 +194,13 @@
           uri strip_prefix /glance
           reverse_proxy localhost:8080
         }
+        handle /files/* {
+          reverse_proxy localhost:3923 {
+            header_up Host {upstream_hostport}
+            header_up X-Real-IP {remote_host}
+            header_up X-Forwarded-For {remote_host}
+            header_up X-Forwarded-Proto {scheme}
+          }
         }
       }
     '';

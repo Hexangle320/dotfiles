@@ -60,8 +60,9 @@ in {
     modules = [
       ./Server/configuration.nix
       inputs.nix-minecraft.nixosModules.minecraft-servers
+      inputs.copyparty.nixosModules.default
       {
-        nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
+        nixpkgs.overlays = [ inputs.nix-minecraft.overlay inputs.copyparty.overlays.default ];
       }
     ];
   };
