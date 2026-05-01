@@ -60,11 +60,26 @@
 
   services.kasmweb.enable = true;
   services.kasmweb.listenPort = 8443;
-  
+
   environment.defaultPackages = lib.mkForce [];
 
   # Generate self-signed cert for the public IP
   security.acme.acceptTerms = false; # not using ACME
+
+  services.anubis = {
+    instances = {
+      main = {
+        enable = true;
+        settings = {
+          TARGET = "http://127.0.0.1:8088";
+          COOKIE_DOMAIN = "";
+          OG_PASSTHROUGH = true;
+          BIND_NETWORK = "tcp";
+          BIND = "127.0.0.1:8089";
+        };
+      };
+    };
+  };
 
   services.caddy = {
     enable = true;
@@ -72,31 +87,57 @@
       auto_https off
     '';
     extraConfig = ''
+      (anubis_proxy) {
+        reverse_proxy localhost:8089 {
+          header_up X-Real-IP {remote_host}
+          header_up X-Forwarded-For {remote_host}
+          header_up X-Forwarded-Proto {scheme}
+          header_up X-Forwarded-Host {host}
+          header_up X-Forwarded-Port "443"
+        }
+      }
+
       :443 {
         tls /var/lib/caddy-certs/cert.pem /var/lib/caddy-certs/key.pem
+
+        handle /.within.website/* {
+          import anubis_proxy
+        }
+        handle /glance/* {
+          import anubis_proxy
+        }
+        handle /2fauth/* {
+          import anubis_proxy
+
+        reverse_proxy https://localhost:8443 {
+          transport http {
+            tls_insecure_skip_verify
+            keepalive 30s
+          }
+          header_up Host {host}
+          header_up X-Real-IP {remote_host}
+          header_up X-Forwarded-For {remote_host}
+          header_up X-Forwarded-Proto {scheme}
+          header_up X-Forwarded-Host {host}
+          header_up X-Forwarded-Port "443"
+          header_up Connection "Upgrade"
+          header_up Upgrade "websocket"
+          flush_interval -1
+        }
+      }
+
+      :8088 {
+        bind 127.0.0.1
+
         handle /2fauth/* {
           uri strip_prefix /2fauth
           reverse_proxy localhost:8000
         }
-	      handle /glance/* {
+
+        handle /glance/* {
           uri strip_prefix /glance
           reverse_proxy localhost:8080
         }
-        reverse_proxy https://localhost:8443 {
-          transport http {
-			    tls_insecure_skip_verify
-          keepalive 30s
-		    }
-        header_up Host {host}
-        header_up X-Real-IP {remote_host}
-        header_up X-Forwarded-For {remote_host}
-        header_up X-Forwarded-Proto {scheme}
-        header_up X-Forwarded-Host {host}
-        header_up X-Forwarded-Port "443"
-        header_up Connection "Upgrade"
-        header_up Upgrade "websocket"
-
-        flush_interval -1
         }
       }
     '';
