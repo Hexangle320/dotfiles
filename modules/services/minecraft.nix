@@ -83,6 +83,14 @@
               url = "https://cdn.modrinth.com/data/1bokaNcj/versions/nhb2seHH/xaerominimap-fabric-26.1.2-25.3.11.jar";
               sha512 = "sha512-gjZ+7vKsE+wxO2xT1ltA17zCqbs/22KtqAQGhKHv/vc8lAZXwhRBCHj5nYuOUxcFvszF2QaqAHuDmyMej6wYuw==";
             };
+            Terralith = pkgs.fetchurl {
+              url = "https://cdn.modrinth.com/data/8oi3bsk5/versions/FCzSjHeG/Terralith_26.1_v2.6.2_Fabric.jar";
+              sha512 = "sha512-WjvimGpiREbIKoh5405Mewn2+YoZN/1Nm89TVrgyHwuc67XlZ+jQCugWHSYbEI+3yagOvtYfLtuM2whSszy6zA==";
+            };
+            Lithostitched = pkgs.fetchurl {
+              url = "https://cdn.modrinth.com/data/XaDC71GB/versions/cHH1mPJL/lithostitched-1.7.2-fabric-26.1.jar";
+              sha512 = "sha512-Dgz7VfZGenrf+EdSbnbV2q8hLrN9KXMHv5fduhLCxiAvVyckht1VD2j/RN9lPCiNaXJMAeflXWlyPMhGuBNFAw==";
+            };
           }
         );
       };
