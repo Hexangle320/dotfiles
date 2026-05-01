@@ -42,7 +42,10 @@
     users.hex = {
       isNormalUser = true;
       extraGroups = ["networkmanager" "wheel" "minecraft"];
-      openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHNxrsfCUUiGpccHJ5ZfOdFSPOiUXTMd2uj3A2GTVYLu hex@server 116458789+Hexangle320@users.noreply.github.com"];
+      openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHNxrsfCUUiGpccHJ5ZfOdFSPOiUXTMd2uj3A2GTVYLu hex@server 116458789+Hexangle320@users.noreply.github.com"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPMbeRDlstuEGCOaz9TCln1GaPTJAzzi9YhonXvsH8yI 116458789+Hexangle320@users.noreply.github.com"
+      ];
     };
   };
 
