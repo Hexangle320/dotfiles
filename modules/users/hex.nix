@@ -69,7 +69,7 @@ in {
       # Gtk
       ".config/gtk-4.0/settings.ini".source = ../../dots/gtk4/settings.ini;
       # Git
-      "~/".source = ../../dots/git/.gitconfig;
+      ".config/git/.gitconfig".source = ../../dots/git/.gitconfig;
     };
   };
 }
