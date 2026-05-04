@@ -64,7 +64,7 @@
         };
       in
         pkgs.mkShell {
-          packages = [pros-cli];
+          packages = [pros-cli pkgs.gcc-arm-embedded];
         };
     });
   };
