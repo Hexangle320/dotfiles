@@ -38,10 +38,7 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   users = {
-    mutableUsers = false;
     users.hex = {
-      isNormalUser = true;
-      extraGroups = ["networkmanager" "wheel" "minecraft"];
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHNxrsfCUUiGpccHJ5ZfOdFSPOiUXTMd2uj3A2GTVYLu hex@server 116458789+Hexangle320@users.noreply.github.com"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPMbeRDlstuEGCOaz9TCln1GaPTJAzzi9YhonXvsH8yI 116458789+Hexangle320@users.noreply.github.com"
@@ -54,7 +51,7 @@
     wget
     openssl
     caddy
-    copyparty 
+    copyparty
   ];
 
   programs.nix-ld.enable = true; # for vscode remote
@@ -67,17 +64,17 @@
   services.copyparty = {
     enable = true;
     # the user to run the service as
-    user = "copyparty"; 
+    user = "copyparty";
     # the group to run the service as
-    group = "copyparty"; 
+    group = "copyparty";
     # directly maps to values in the [global] section of the copyparty config.
     # see `copyparty --help` for available options
     settings = {
       i = "0.0.0.0";
-      p = [ 3923 ];
+      p = [3923];
       no-reload = true;
       rp-loc = "/files";
-      rproxy = "1";        
+      rproxy = "1";
       allow-csrf = true;
       ignored-flag = false;
     };
@@ -89,7 +86,7 @@
 
     # create a group
     groups = {
-      g1 = [ "hex" ];
+      g1 = ["hex"];
     };
 
     # create a volume
@@ -97,7 +94,7 @@
       "/" = {
         path = "/srv/copyparty";
         access = {
-          A = [ "hex" ];
+          A = ["hex"];
         };
         flags = {
           fk = 4;
@@ -111,7 +108,7 @@
     openFilesLimit = 8192;
     package = pkgs.copyparty.override {
       # provides exiftool for bin/hooks/image-noexif.py
-      extraPackages = [ pkgs.exiftool ];
+      extraPackages = [pkgs.exiftool];
     };
   };
 
