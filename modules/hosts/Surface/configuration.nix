@@ -30,6 +30,11 @@
   networking.hostName = "Surface";
   networking.networkmanager.enable = true;
 
+  services.udev.extraRules = ''
+    # allow user rw access to serial ports
+    KERNEL=="ttyACM[0-9]*",MODE="0666"
+  '';
+
   environment.persistence."/persist" = {
     directories = [
       "/etc/nixos"
