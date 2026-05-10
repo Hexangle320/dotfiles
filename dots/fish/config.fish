@@ -23,3 +23,10 @@ if test -n "$IN_NIX_SHELL";
 else
   set -g hydro_symbol_start
 end
+
+if test -n "$SSH_CLIENT";
+  set -g hydro_symbol_start "<ssh> "
+else
+  set -g hydro_symbol_start
+end
+
