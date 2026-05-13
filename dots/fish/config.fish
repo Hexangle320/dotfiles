@@ -18,15 +18,12 @@ set hydro_symbol_git_dirty "*"
 set fish_prompt_pwd_dir_length 0
 function fish_mode_prompt -d "remove vi mode indicators"; end
 
-if test -n "$IN_NIX_SHELL";
+if test -n "$IN_NIX_SHELL"; and test -n "$SSH_CLIENT";
+  set -g hydro_symbol_start "<ssh & nix-shell> "
+else if test -n "$IN_NIX_SHELL";
   set -g hydro_symbol_start "<nix-shell> "
-else
-  set -g hydro_symbol_start
-end
-
-if test -n "$SSH_CLIENT";
+else if test -n "$SSH_CLIENT";
   set -g hydro_symbol_start "<ssh> "
 else
   set -g hydro_symbol_start
 end
-
