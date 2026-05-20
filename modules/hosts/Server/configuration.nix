@@ -58,7 +58,7 @@
 
   services.kasmweb.enable = true;
   services.kasmweb.listenPort = 8443;
-
+  
   environment.defaultPackages = lib.mkForce [];
 
   services.copyparty = {
@@ -112,8 +112,7 @@
     };
   };
 
-  # Generate self-signed cert for the public IP
-  security.acme.acceptTerms = false; # not using ACME
+  security.acme.acceptTerms = true;
 
   services.anubis = {
     instances = {
@@ -133,9 +132,13 @@
   services.caddy = {
     enable = true;
     globalConfig = ''
-      auto_https off
+      #auto_https off
+      cert_issuer acme {
+        profile shortlived
+      }
     '';
     extraConfig = ''
+
       (anubis_proxy) {
         reverse_proxy localhost:8089 {
           header_up X-Real-IP {remote_host}
@@ -147,7 +150,6 @@
       }
 
       :443 {
-        tls /var/lib/caddy-certs/cert.pem /var/lib/caddy-certs/key.pem
 
         handle /.within.website/* {
           import anubis_proxy
@@ -178,10 +180,10 @@
           flush_interval -1
         }
       }
-
+      
       :8088 {
         bind 127.0.0.1
-
+        
         handle /2fauth/* {
           uri strip_prefix /2fauth
           reverse_proxy localhost:8000
@@ -191,6 +193,7 @@
           uri strip_prefix /glance
           reverse_proxy localhost:8080
         }
+        
         handle /files/* {
           reverse_proxy localhost:3923 {
             header_up Host {upstream_hostport}
