@@ -17,6 +17,7 @@
     servers.main = {
       enable = true;
       autoStart = true;
+      jvmOpts = "-Xms6G -Xmx10G";
 
       package = pkgs.fabricServers.fabric-26_1_2.override { jre_headless = pkgs.openjdk25_headless; };
 
@@ -90,6 +91,18 @@
             Lithostitched = pkgs.fetchurl {
               url = "https://cdn.modrinth.com/data/XaDC71GB/versions/cHH1mPJL/lithostitched-1.7.2-fabric-26.1.jar";
               sha512 = "sha512-Dgz7VfZGenrf+EdSbnbV2q8hLrN9KXMHv5fduhLCxiAvVyckht1VD2j/RN9lPCiNaXJMAeflXWlyPMhGuBNFAw==";
+            };
+            Tectonic = pkgs.fetchurl {
+              url = "https://cdn.modrinth.com/data/lWDHr9jE/versions/jL2ZsTzx/tectonic-3.0.22-fabric-26.1.jar";
+              sha512 = "sha512-GHez55Vq9FJe64dYOScZ/qjGJLC4XDb9Pjd4CvSqWCOjvWmBzv/yc2TJmatJKrz+oCRIonpAS8QeO52SThvJcQ==";
+            };
+            CliffTree = pkgs.fetchurl {
+              url = "https://cdn.modrinth.com/data/59ypHk8x/versions/ccmOs0V8/CliffTree%203.2.1%20-%2026.1.jar";
+              sha512 = "sha512-3upUQJ7bmIH9Um+0OenIKXKrOK4IZ/EJqTgr/1JIq6ITCi/w0jplQNr2b91JO6v25jNnbgBNIwWwdwbrkw9wMQ==";
+            };
+            Chunky = pkgs.fetchurl {
+              url = "https://cdn.modrinth.com/data/fALzjamp/versions/4Eotm6ov/Chunky-Fabric-1.5.3.jar";
+              sha512 = "sha512-uDv+eyGNCqYjKvl3rnQdwfgrEOUM0Su3WfZc9Ba4tivsy1Q+WH7wuWcKvgOBVmD44JG8aCNiTWXPBzAFcVc1Fg==";
             };
           }
         );
